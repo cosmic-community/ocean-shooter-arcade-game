@@ -1,4 +1,5 @@
 import { createBucketClient } from '@cosmicjs/sdk'
+import { HighScore } from '@/types'
 
 export const cosmic = createBucketClient({
   bucketSlug: process.env.COSMIC_BUCKET_SLUG as string,
@@ -38,7 +39,8 @@ export async function getHighScores(limit: number = 10) {
       .depth(1);
     
     // Sort manually for current SDK version
-    const sortedScores = response.objects.sort((a, b) => {
+    // Changed: Added explicit type annotations to sort function parameters
+    const sortedScores = (response.objects as HighScore[]).sort((a: HighScore, b: HighScore) => {
       const scoreA = a.metadata?.score || 0;
       const scoreB = b.metadata?.score || 0;
       return scoreB - scoreA;
