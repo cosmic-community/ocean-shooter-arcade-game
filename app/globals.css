@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ocean-dark: 10 22 40;
+    --ocean-deep: 26 47 79;
+    --ocean-medium: 42 79 127;
+    --ocean-light: 74 127 175;
+    --ocean-surface: 106 175 223;
+  }
+  
+  body {
+    @apply bg-ocean-dark text-white;
+  }
+}
+
+@layer components {
+  .arcade-button {
+    @apply px-6 py-3 bg-arcade-yellow text-black font-bold text-lg rounded-lg shadow-lg hover:bg-yellow-400 transition-all transform hover:scale-105 active:scale-95;
+  }
+  
+  .game-panel {
+    @apply bg-ocean-deep border-4 border-ocean-light rounded-lg p-6 shadow-2xl;
+  }
+  
+  .score-display {
+    @apply text-3xl font-bold text-arcade-cyan tracking-wider;
+  }
+}
+
+@layer utilities {
+  .text-shadow-arcade {
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  }
+  
+  .glow-cyan {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
+  }
+  
+  .glow-yellow {
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.5), 0 0 20px rgba(255, 255, 0, 0.3);
+  }
+}
+
+canvas {
+  cursor: crosshair;
+}
